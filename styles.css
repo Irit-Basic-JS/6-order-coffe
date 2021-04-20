@@ -45,3 +45,10 @@
     border-radius: 5px;
 }
 
+.beverage-list {
+    padding-left: 0;
+}
+
+.beverage-list li {
+    list-style-type: none;
+}
