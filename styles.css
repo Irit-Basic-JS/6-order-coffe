@@ -45,3 +45,13 @@
     border-radius: 5px;
 }
 
+.acceptance-window {
+    color: red;
+    position: fixed;
+    background-color: black;
+    width: 500px;
+    min-height: 150px;
+
+    margin: auto auto;
+}
+
