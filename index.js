@@ -44,6 +44,7 @@ sumbitButton.addEventListener("click", (e) => {
     dialogWindow.textContent = `Ваш заказ оформлен Вы заказали ${data.count} drink(s)`;
     dialogWindow.classList.add("acceptance-window");
     dialogWindow.append(closeButton);
+    dialogWindow.append(createTable(data));
 
     document.body.append(fon);
 });
@@ -68,6 +69,37 @@ function getData() {
     }
 
     return result;
+}
+
+function createTable(data) {
+    let table = document.createElement("table");
+    let tr = document.createElement("tr");
+    let th = document.createElement("th");
+    th.textContent = "Напиток";
+    tr.append(th);
+    th = document.createElement("th");
+    th.textContent = "Молоко";
+    tr.append(th);
+    th = document.createElement("th");
+    th.textContent = "Дополнительно";
+    tr.append(th);
+    table.append(tr);
+
+    for (let i of data.drinks) {
+        tr = document.createElement("tr");
+        let td = document.createElement("td");
+        td.textContent = i.drink;
+        tr.append(td);
+        td = document.createElement("td");
+        td.textContent = i.milk;
+        tr.append(td);
+        td = document.createElement("td");
+        td.textContent = i.additionally;
+        tr.append(td);
+        table.append(tr);
+    }
+
+    return table;
 }
 
 
