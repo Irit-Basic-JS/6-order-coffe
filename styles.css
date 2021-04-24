@@ -1,5 +1,11 @@
+body{
+    background-color: rgba(212, 206, 206, 0.69);
+    padding: 0;
+    margin: 0;
+}
+
 .beverage {
-    border: 1px solid #eee;
+    border: 1px solid #3f3c3c;
     margin: 15px 0;
     padding: 15px;
 }
@@ -69,4 +75,20 @@
     margin: 10px;
     margin-right: 20px;
 }
+
+.table-form {
+    border: black 5px solid;
+    border-collapse: collapse;
+    padding: 5px;
+    margin: 10px;
+}
+
+td,th {
+    border: black 2px solid;
+}
+
+.error {
+    border: red 2px solid;
+}
+
 
