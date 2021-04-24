@@ -97,9 +97,11 @@ submitButton.addEventListener("click", (e) => {
     submit.textContent = "Отправить";
     submit.type = "submit"
     submit.addEventListener("click", (e) => {
-        if (time.classList.contains("error")) {
+        if (time.classList.contains("error") || !time.value) {
             e.preventDefault();
-            alert("исправьте время на корректное значение")
+            alert("Укажите корректное время");
+        } else {
+            form.submit();
         }
     });
 
