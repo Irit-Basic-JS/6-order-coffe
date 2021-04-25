@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <title>Заказ кофе</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css"/>
   </head>
   <body>
-    <form>
+    <form id="form">
       <div class="beverages">
         <fieldset class="beverage">
           <h4 class="beverage-count" style="display: inline-block">Напиток №1</h4>
-          <input type="button" class="close" value="X" style="float: right" onclick="closeButton(this.parentNode)">
+          <button class="close" onclick="closeButton(this.parentNode)">X</button>
           <label class="field">
             <span class="label-text">Я буду</span>
             <select>
@@ -56,6 +56,13 @@
               <input type="checkbox" name="options1" value="cinnamon"/>
               <span>корицу</span>
             </label>
+          </div>
+          <div class="field">
+            <label>
+              И еще вот что:
+              <textarea class="comment-input" oninput="comment(this, this.parentNode.parentNode.children[1])"></textarea>
+            </label>
+            <p class="comment-output"></p>
           </div>
         </fieldset>
       </div>
