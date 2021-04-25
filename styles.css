@@ -1,11 +1,19 @@
 .beverage {
-    border: 1px solid #eee;
+    border: 2px solid #a0f3da;;
     margin: 15px 0;
     padding: 15px;
+    border-radius: 5px;
+    font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    box-shadow: 5px 5px 1px #62d0dfb0;
 }
 
 .beverage-count {
     margin: 0 0 15px;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 20px;
+    color: rgba(233, 27, 123, 0.651);
 }
 
 .field {
@@ -26,13 +34,14 @@
 .checkbox-field {
     margin: 5px 0;
     display: block;
+    font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .add-button {
     border: none;
     background: none;
     padding: 10px;
-    color: rgba(0, 27, 255, 0.82);
+    color: rgba(233, 27, 123, 0.856);
     font-size: 14px;
     text-decoration: underline dashed;
     cursor: pointer;
@@ -41,7 +50,99 @@
 .submit-button {
     font-size: 16px;
     padding: 7px 15px;
-    border: 2px solid orange;
+    border: 2px solid #a0f3da;;
     border-radius: 5px;
+    background: none;
+    font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.delete-button {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: none;
+    border: 2px solid rgb(79, 206, 185);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 500px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: 5px 5px 1px #2D2020;
+    padding: 10px;
+    font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+
+.close-button {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: none;
+    border: 1px solid rgb(233, 27, 123);
+}
+
+table {
+    font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 500px;
+    border-spacing: 0;
+    
+}
+
+th {
+    background: #a0f3da;
+    color: rgb(0, 0, 0);
+    
+    padding: 10px 20px;
+}
+
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+
+th:first-child, td:first-child {
+    text-align: left;
+}
+
+th:first-child {
+    border-top-left-radius: 10px;
+}
+
+th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+}
+
+td {
+    padding: 10px 20px;
+    background: #f891c5e3;
+}
+
+tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+tr td:last-child {
+    border-right: none;
+}
