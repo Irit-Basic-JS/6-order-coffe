@@ -1,4 +1,23 @@
-.beverage {
+form {
+    position: relative;
+    width: 300px;
+}
+
+td, th {
+    text-align: center;
+    white-space: pre-wrap;
+    border: 1px solid black;
+    max-width: 200px;
+}
+
+table {
+    display: flex;
+    margin: 30px 30px;
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+
+.beverage-fieldset {
     border: 1px solid #eee;
     margin: 15px 0;
     padding: 15px;
@@ -45,3 +64,46 @@
     border-radius: 5px;
 }
 
+.remove-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal-content {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    width: 500px;
+    height: max-content;
+    min-width: 500px;
+    background: white;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(0,0,0, 0.2);
+    border-radius: .3rem;
+}
+
+.modal-container {
+    backdrop-filter: blur(2px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.close-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}

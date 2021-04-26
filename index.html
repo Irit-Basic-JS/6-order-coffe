@@ -1,69 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Заказ кофе</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <form>
-      <fieldset class="beverage">
-        <h4 class="beverage-count">Напиток №1</h4>
-        <label class="field">
-          <span class="label-text">Я буду</span>
-          <select>
-            <option value="espresso">Эспрессо</option>
-            <option value="capuccino" selected>Капучино</option>
-            <option value="cacao">Какао</option>
-          </select>
-        </label>
-        <div class="field">
-          <span class="checkbox-label">Сделайте напиток на</span>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="usual" checked />
-            <span>обычном молоке</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="no-fat" />
-            <span>обезжиренном молоке</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="soy" />
-            <span>соевом молоке</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="coconut" />
-            <span>кокосовом молоке</span>
-          </label>
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="hidden modal-container" id="modal-container">
+        <div class="modal-content">
+            <h1>Заказ принят!</h1>
+            <h2></h2>
+            <table class="order-table">
+            </table>
+            <div class="field">
+                <label>Выберите время заказа
+                    <input type="time" name="time">
+                </label>
+            </div>
+            <div class="field">
+                <label>Оформить
+                    <input type="submit" name="order">
+                </label>
+            </div>
+            <button class="close-button">X</button>
         </div>
-        <div class="field">
-          <span class="checkbox-label">Добавьте к напитку:</span>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="whipped cream" />
-            <span>взбитых сливок</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="marshmallow" />
-            <span>зефирок</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="chocolate" />
-            <span>шоколад</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="cinnamon" />
-            <span>корицу</span>
-          </label>
-        </div>
-      </fieldset>
-      <div>
-        <button type="button" class="add-button">+ Добавить напиток</button>
-      </div>
-      <div style="margin-top: 30px">
-        <button type="submit" class="submit-button">Готово</button>
-      </div>
-    </form>
-
-    <script src="index.js"></script>
-  </body>
+    </div>
+    <div class="container">
+        <form class="beverage" id="beverage-1">
+            <fieldset class="beverage-fieldset">
+                <h4 class="beverage-count">Напиток №1</h4>
+                <label class="field">
+                    <span class="label-text">Я буду</span>
+                    <select>
+                        <option value="espresso" data-type="Эспрессо">Эспрессо</option>
+                        <option selected value="capuccino" data-type="Капучино">Капучино</option>
+                        <option value="cacao" data-type="Какао">Какао</option>
+                    </select>
+                </label>
+                <div class="field">
+                    <span class="checkbox-label">Сделайте напиток на</span>
+                    <label class="checkbox-field">
+                        <input checked name="milk" type="radio" value="usual" data-milk="Обычное"/>
+                        <span>обычном молоке</span>
+                    </label>
+                    <label class="checkbox-field">
+                        <input name="milk" type="radio" value="no-fat" data-milk="Обезжиренное"/>
+                        <span>обезжиренном молоке</span>
+                    </label>
+                    <label class="checkbox-field">
+                        <input name="milk" type="radio" value="soy" data-milk="Соевое"/>
+                        <span>соевом молоке</span>
+                    </label>
+                    <label class="checkbox-field">
+                        <input name="milk" type="radio" value="coconut" data-milk="Кокосовое"/>
+                        <span>кокосовом молоке</span>
+                    </label>
+                </div>
+                <div class="field">
+                    <span class="checkbox-label">Добавьте к напитку:</span>
+                    <label class="checkbox-field">
+                        <input name="options" type="checkbox" value="whipped cream" data-adds="Взбитые сливки"/>
+                        <span>взбитых сливок</span>
+                    </label>
+                    <label class="checkbox-field">
+                        <input name="options" type="checkbox" value="marshmallow" data-adds="Зефирки"/>
+                        <span>зефирок</span>
+                    </label>
+                    <label class="checkbox-field">
+                        <input name="options" type="checkbox" value="chocolate" data-adds="Шоколад"/>
+                        <span>шоколад</span>
+                    </label>
+                    <label class="checkbox-field">
+                        <input name="options" type="checkbox" value="cinnamon" data-adds="Корица"/>
+                        <span>корицу</span>
+                    </label>
+                </div>
+                <div>
+                    <span class="wishes-text">И еще вот что
+                        <textarea class="wishes" name="wishes"></textarea>
+                    </span>
+                    <p class="wishes-output"></p>
+                </div>
+            </fieldset>
+            <button class="remove-button" type="button">X</button>
+        </form>
+    </div>
+<div>
+    <button class="add-button" type="button">+ Добавить напиток</button>
+</div>
+<div style="margin-top: 30px">
+    <button class="submit-button" type="submit">Готово</button>
+</div>
+<script src="index.js"></script>
+</body>
 </html>
