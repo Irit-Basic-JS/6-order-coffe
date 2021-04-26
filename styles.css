@@ -45,3 +45,94 @@
     border-radius: 5px;
 }
 
+.acceptance {
+    position: fixed;
+    display: flex;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.41);
+}
+
+.close-button {
+    float: right;
+    margin: 10px;
+    margin-right: 20px;
+}
+
+.form-drinks {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-drink {
+    width: 250px;
+    background-color: aquamarine;
+    border:black dotted;
+}
+
+.close {
+    float: right;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.48);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-window {
+    display: grid;
+    background-color: white;
+    border: 5px solid black;
+    border-radius: 3%;
+    width: 500px;
+    height: auto;
+    min-height: 200px;
+    grid-template-areas: "count count close"
+                       "table table table"
+                       "submit submit submit";
+}
+
+table {
+    margin: 0;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+td {
+    padding: 5px 10px 5px 5px;
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+th {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.modal-count {
+    grid-area: count;
+    text-align: center;
+}
+
+.modal-table {
+    grid-area: table;
+}
+
+.modal-submit {
+    grid-area: submit;
+}
+
+.modal-close {
+    grid-area: close;
+}
