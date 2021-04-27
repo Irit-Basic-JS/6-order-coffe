@@ -6,7 +6,7 @@ document.querySelector('.remove-button').addEventListener('click', () => handleR
 document.querySelector('.submit-button').addEventListener('click', event => handleSubmitButton(event));
 document.querySelector('.close-button').addEventListener('click', () => document.getElementById('modal-container').classList.add('hidden'))
 document.querySelector('.wishes').addEventListener("input", () => handleTextAreaChanged(document.querySelector('.wishes'), document.querySelector('.wishes-output')));
-document.querySelector('input[name="order"]').addEventListener('click', (event) => {
+document.querySelector('input[name="order"]').addEventListener('click', () => {
     let timeField = document.querySelector('input[name="time"]');
 	let enteredTime = timeField.value.split(':');
 	let now = new Date();
