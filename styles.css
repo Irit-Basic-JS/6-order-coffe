@@ -1,47 +1,150 @@
 .beverage {
-    border: 1px solid #eee;
-    margin: 15px 0;
+    width: 60%;
+    margin: 15px auto;
     padding: 15px;
+    border: 5px solid rgba(65, 105, 225, 0.3);
+    border-radius: 10px;
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 18px;
 }
 
 .beverage-count {
     margin: 0 0 15px;
+    color: #252850;
+    text-align: center;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
 }
+
+.fields { display: flex; }
 
 .field {
     display: block;
+    width: 40%;
     margin-bottom: 10px;
 }
 
 .label-text {
     display: inline-block;
-    width: 80px;
+    margin-right: 10px;
+    color: #252850;
 }
+
+select { padding: 5px; }
 
 .checkbox-label {
     margin-bottom: 5px;
     display: inline-block;
+    color: #252850;
 }
 
 .checkbox-field {
-    margin: 5px 0;
+    margin: 5px 10px;
     display: block;
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 0.95em;
+    color: rgba(65, 105, 225, 0.7);
 }
 
 .add-button {
+    display: block;
+    margin: 0 auto;
     border: none;
+    border-radius: 10px;
     background: none;
-    padding: 10px;
-    color: rgba(0, 27, 255, 0.82);
-    font-size: 14px;
-    text-decoration: underline dashed;
+    padding: 15px 40px;
+    color: #252850;
+    font-size: 18px;
+    font-family: "Times New Roman", Georgia, Serif;
     cursor: pointer;
 }
 
 .submit-button {
+    display: block;
+    margin: -20px auto 0;
+    border: 2px solid rgba(65, 105, 225, 0.3);
+    border-radius: 10px;
+    background: none;
+    padding: 10px 20px;
+    color: #252850;
+    font-size: 18px;
+    font-family: "Times New Roman", Georgia, Serif;
+    cursor: pointer;
+}
+
+.add-button:hover, .submit-button:hover {
+    background-color: rgba(65, 105, 225, 0.3);
+}
+
+.delete-button {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: none;
+    border: 2px solid #252850;
+    color: #252850;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 500px;
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 10px;
+    font-family: "Times New Roman", Georgia, Serif;
+    text-align: center;
+    color: #252850;
+    font-size: 20px;
+}
+
+.close-button {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: none;
+    border: 2px solid #252850;
+    color: #252850;
+}
+
+table {
+    width: 500px;
+    font-family: "Times New Roman", Georgia, Serif;
     font-size: 16px;
-    padding: 7px 15px;
-    border: 2px solid orange;
-    border-radius: 5px;
+    border-spacing: 0;
+}
+
+th { background: rgba(65, 105, 225, 0.3); }
+
+td { background: rgba(65, 105, 225, 0.1); }
+
+th, td {
+    padding: 10px 20px;
+    border: 1px solid #FFF;
+}
+
+th:first-child, td:first-child {
+    text-align: left;
+}
+
+th:first-child {
+    border-top-left-radius: 10px;
+}
+
+th:last-child {
+    border-top-right-radius: 10px;
 }
 
