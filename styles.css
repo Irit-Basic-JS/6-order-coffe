@@ -1,4 +1,6 @@
 .beverage {
+    background-color:blanchedalmond;
+    border-radius: 10px;
     border: 1px solid #eee;
     margin: 15px 0;
     padding: 15px;
@@ -43,5 +45,65 @@
     padding: 7px 15px;
     border: 2px solid orange;
     border-radius: 5px;
+}
+
+.delete-button {
+    float: right;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: #d32b2b;
+    margin: 20px auto;
+    position: relative;
+    display: block;
+    z-index: 200;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.delete-button:before,
+.delete-button:after {
+    content: '';
+    width: 80%;
+    height: 6px;
+    background: #BFE2FF;
+    position: absolute;
+    top: 48%;
+    left: 10%;
+    transform: rotate(45deg);
+    transition: all 0.3s ease-out;
+}
+.delete-button:after {
+    transform: rotate(-45deg);
+    transition: all 0.3s ease-out;
+}
+.delete-button:hover:before,
+.delete-button:hover:after {
+    transform: rotate(180deg);
+    background: #FFF; 
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 500px;
+    height: 200px;
+    background-color: blanchedalmond;
+    padding: 10px;
+    border-color: aliceblue;
+    border-radius: 10px;
+}
+
+.close-button {
+    float: right;
 }
 
