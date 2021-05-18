@@ -5,6 +5,7 @@ const closeButton = document.querySelector('.close-button');
 const submitButton = document.querySelector('.submit-button');
 const overlay = document.querySelector('.overlay');
 const order = document.querySelector('.order');
+const sumbitOrderButton = document.querySelector('.submit-order-button');
 let beverageCount = 0;
 
 
@@ -22,7 +23,6 @@ submitButton.addEventListener('click', function (evt) {
     overlay.style.display = 'block';
 
     createTableOrder();
-    console.log(getData());
 });
 
 closeButton.addEventListener('click', function () {
@@ -32,6 +32,25 @@ closeButton.addEventListener('click', function () {
 window.addEventListener('click', function (evt) {
     if (evt.target === overlay) {
         overlay.style.display = 'none';
+    }
+});
+
+sumbitOrderButton.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    const timeOrder = document.querySelector('.time-order');
+    if (!timeOrder.value) {
+        alert('Укажите время заказа');
+    } else {
+        const [hours, minutes] = timeOrder.value.split(':');
+        const [hoursNow, minutesNow] = new Date().toLocaleTimeString().split(':');
+        if (hours < hoursNow || hours === hoursNow && minutes < minutesNow) {
+            timeOrder.style.borderColor = 'red';
+            setTimeout(() => alert(
+                'Мы не умеем перемещаться во времени. Выберите время позже, чем текущее'
+            ), 10);
+        } else {
+            closeButton.click();
+        }
     }
 });
 
