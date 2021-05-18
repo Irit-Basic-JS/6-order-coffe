@@ -42,6 +42,7 @@ function createBeverage(number) {
 
     setMilkNames(beverage, number);
     addRemoveButton(beverage);
+    addWishes(beverage);
 
     return beverage;
 }
@@ -113,12 +114,14 @@ function getData() {
             const name = option.parentElement.querySelector('span').textContent;
             optionsName.push(name);
         }
-        
+
+        const wishes = beverage.querySelector('textarea').value;
 
         result.push([
             beverageName,
             milkName,
             optionsName.join(', '),
+            wishes,
         ]);
     }
 
@@ -134,7 +137,7 @@ function createTableOrder() {
     order.append(caption);
 
     const tableHeader = document.createElement('tr');
-    const headers = ['Напиток', 'Молоко', 'Дополнительно']
+    const headers = ['Напиток', 'Молоко', 'Дополнительно', 'Пожелания']
     for (const header of headers) {
         const th = document.createElement('th');
         th.append(header);
@@ -145,13 +148,39 @@ function createTableOrder() {
     const beverages = getData();
     for (const beverage of beverages) {
         const tr = document.createElement('tr');
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < headers.length; i++) {
             const td = document.createElement('td');
             td.append(beverage[i] || '-');
             tr.append(td);
         }
         order.append(tr);
     }
+}
+
+function addWishes(beverage) {
+    const wishes = beverage.querySelector('textarea');
+    wishes.oninput = function () {
+        const content = beverage.querySelector('.content');
+        content.innerHTML = highlightImportant(wishes.value);
+    };
+}
+
+function highlightImportant(text) {
+    const importantWords = [
+        'срочно', 'побыстрее', 'быстрее',
+        'поскорее', 'скорее', 'очень нужно',
+    ];
+
+    for (const word of importantWords) {
+        const matchesArray = text.match(new RegExp(`${word}(?!</b>)`, 'gi'));
+        if (matchesArray) {
+            for (const match of matchesArray) {
+                text = text.replaceAll(match, `<b>${match}</b>`);
+            }
+        }
+    }
+
+    return text;
 }
 
 addButton.click();

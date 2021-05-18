@@ -110,7 +110,6 @@
 }
 
 .order {
-    table-layout: fixed;
     margin: auto;
     margin-bottom: 25px;
     width: 90%;
@@ -138,3 +137,13 @@
       text-align: center;
   }
   
+  textarea {
+      display: block;
+      width: 300px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+  }
+
+  .content {
+      word-wrap: break-word;
+  }
