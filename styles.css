@@ -45,3 +45,40 @@
     border-radius: 5px;
 }
 
+.delete {
+    background-color: red;
+    margin-left: 80px;
+    font-weight: bold;
+}
+
+.modal {
+    position: absolute;
+    text-align: center;
+    top: 45%;
+    left: 35%;
+    width: 500px;
+    height: auto;
+    background-color: orange;
+    border: 3px solid black;
+    z-index: 1;
+}
+
+.hide {
+    display: none;
+}
+
+.overlay {
+    background-color:rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+}
+
+.close {
+    background-color: red;
+    float: right;
+    font-weight: bold;
+} 
