@@ -58,7 +58,7 @@
     left: 35%;
     width: 500px;
     height: auto;
-    background-color: rgb(50, 197, 31);
+    background-color: orange;
     border: 3px solid black;
     z-index: 1;
 }
