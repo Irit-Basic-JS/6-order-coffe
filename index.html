@@ -7,8 +7,10 @@
   </head>
   <body>
     <form>
+      <div class='cont'></div>
       <fieldset class="beverage">
-        <h4 class="beverage-count">Напиток №1</h4>
+        <input type="button" class="delete" value="X">
+        <h4 class="beverage-count">Напиток №<span class='number'>1</span></h4>
         <label class="field">
           <span class="label-text">Я буду</span>
           <select>
@@ -56,6 +58,7 @@
           </label>
         </div>
       </fieldset>
+    </div>
       <div>
         <button type="button" class="add-button">+ Добавить напиток</button>
       </div>
@@ -63,6 +66,12 @@
         <button type="submit" class="submit-button">Готово</button>
       </div>
     </form>
+    <div class='modal hidden'>
+      <button class="close">X</button>
+      <p>Заказ принят!</p>
+      <p class='text'></p>
+    </div>
+    <div class='overlay hidden'></div>
 
     <script src="index.js"></script>
   </body>
