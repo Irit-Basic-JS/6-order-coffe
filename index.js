@@ -5,7 +5,10 @@ const closeButton = document.querySelector('.close-button');
 const submitButton = document.querySelector('.submit-button');
 const overlay = document.querySelector('.overlay');
 const order = document.querySelector('.order');
+const sumbitOrderButton = document.querySelector('.submit-order-button');
 let beverageCount = 0;
+
+
 addButton.addEventListener('click', function () {
     const beverage = createBeverage(++beverageCount);
     document.querySelector('template').before(beverage);
@@ -16,9 +19,10 @@ form.addEventListener('click', function () {
 submitButton.addEventListener('click', function (evt) {
     evt.preventDefault();
     overlay.style.display = 'block';
+
     createTableOrder();
-    console.log(getData());
 });
+
 closeButton.addEventListener('click', function () {
     overlay.style.display = 'none';
 });
@@ -27,15 +31,33 @@ window.addEventListener('click', function (evt) {
         overlay.style.display = 'none';
     }
 });
+
+sumbitOrderButton.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    const timeOrder = document.querySelector('.time-order');
+    if (!timeOrder.value) {
+        alert('Укажите время заказа');
+    } else {
+        const [hours, minutes] = timeOrder.value.split(':');
+        const [hoursNow, minutesNow] = new Date().toLocaleTimeString().split(':');
+        if (hours < hoursNow || hours === hoursNow && minutes < minutesNow) {
+            timeOrder.style.borderColor = 'red';
+            setTimeout(() => alert(
+                'Мы не умеем перемещаться во времени. Выберите время позже, чем текущее'
+            ), 10);
+        } else {
+            closeButton.click();
+        }
+    }
+});
+
 function createBeverage(number) {
     const beverage = beverageTemplate.cloneNode(true);
     const title = beverage.querySelector('h4');
     title.textContent = `Напиток №${number}`;
-
     setMilkNames(beverage, number);
     addRemoveButton(beverage);
     addWishes(beverage);
-
     return beverage;
 }
 function setMilkNames(beverage, number) {
@@ -98,9 +120,7 @@ function getData() {
             const name = option.parentElement.querySelector('span').textContent;
             optionsName.push(name);
         }
-
         const wishes = beverage.querySelector('textarea').value;
-
         result.push([
             beverageName,
             milkName,
@@ -108,7 +128,6 @@ function getData() {
             wishes,
         ]);
     }
-
     return result;
 }
 function createTableOrder() {
@@ -117,7 +136,6 @@ function createTableOrder() {
     const declination = getDeclination(beverageCount);
     caption.textContent = `Вы заказали: ${beverageCount} ${declination}`;
     order.append(caption);
-
     const tableHeader = document.createElement('tr');
     const headers = ['Напиток', 'Молоко', 'Дополнительно', 'Пожелания']
     for (const header of headers) {
@@ -137,7 +155,6 @@ function createTableOrder() {
         order.append(tr);
     }
 }
-
 function addWishes(beverage) {
     const wishes = beverage.querySelector('textarea');
     wishes.oninput = function () {
@@ -145,13 +162,11 @@ function addWishes(beverage) {
         content.innerHTML = highlightImportant(wishes.value);
     };
 }
-
 function highlightImportant(text) {
     const importantWords = [
         'срочно', 'побыстрее', 'быстрее',
         'поскорее', 'скорее', 'очень нужно',
     ];
-
     for (const word of importantWords) {
         const matchesArray = text.match(new RegExp(`${word}(?!</b>)`, 'gi'));
         if (matchesArray) {
@@ -160,8 +175,6 @@ function highlightImportant(text) {
             }
         }
     }
-
     return text;
 }
-
 addButton.click();
