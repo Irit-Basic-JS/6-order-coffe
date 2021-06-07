@@ -37,7 +37,6 @@
     border: 2px solid orange;
     border-radius: 5px;
 }
-
 .remove-button,
 .close-button {
     display: block;
@@ -54,21 +53,17 @@
     font-weight: bold;
     font-size: 18px;
 }
-
 .remove-button:hover,
 .close-button:hover {
     background-color: rgb(175, 35, 35);
 }
-
 .remove-button:disabled {
     background-color: gray;
 }
-
 .close-button {
     margin-top: 10px;
     margin-right: 10px;
 }
-
 .overlay {
     position: fixed;
     left: 0; right: 0;
@@ -78,9 +73,8 @@
     display: none;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
-
+    
 }
-
 .modal-window {
     position: absolute;
     left: 0; right: 0;
@@ -92,7 +86,6 @@
     border: 5px solid orange;
     border-radius: 10px;
 }
-
 .accept {
     display: block;
     text-align: center;
@@ -103,7 +96,6 @@
 }
 
 .order {
-    table-layout: fixed;
     margin: auto;
     margin-bottom: 25px;
     width: 90%;
@@ -111,7 +103,6 @@
     border: 2px solid orangered;
     color: rgb(33, 49, 49);
   }
-
   caption {
       padding: 10px;
       margin: 0 30px;
@@ -119,14 +110,24 @@
       font-size: 18px;
       border-top: 1px solid rgba(255, 165, 0, 0.4);
   }
-
+  
   th {
       border: 1px solid gray;
       padding: 5px;
   }
-
   td {
       border: 1px solid gray;
       padding: 5px;
       text-align: center;
+  }
+
+  textarea {
+      display: block;
+      width: 300px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+  }
+
+  .content {
+      word-wrap: break-word;
   }
