@@ -1,5 +1,4 @@
 .beverage {
-    border: 1px solid #eee;
     margin: 15px 0;
     padding: 15px;
 }
@@ -45,3 +44,13 @@
     border-radius: 5px;
 }
 
+.delete {
+    float: right;
+    position: relative;
+    top: -20px;
+}
+
+textarea {
+    width: 50%;
+    height: 150px;
+}
