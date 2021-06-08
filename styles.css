@@ -50,7 +50,19 @@
     top: -20px;
 }
 
+table {
+    width: 550px;
+    table-layout: fixed;
+}
+
+table td {
+    border: 1px solid black;
+    padding: 5px;
+    word-wrap: break-word;
+}
+
 textarea {
     width: 50%;
     height: 150px;
 }
+
