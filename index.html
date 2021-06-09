@@ -8,7 +8,9 @@
   <body>
     <form>
       <fieldset class="beverage">
-        <h4 class="beverage-count">Напиток №1</h4>
+        <div class="header">
+          <h4 class="beverage-count">Напиток №1</h4>
+        </div>
         <label class="field">
           <span class="label-text">Я буду</span>
           <select>
@@ -57,13 +59,19 @@
         </div>
       </fieldset>
       <div>
-        <button type="button" class="add-button">+ Добавить напиток</button>
+        <button type="button" class="add-button" id="add-button">+ Добавить напиток</button>
       </div>
       <div style="margin-top: 30px">
         <button type="submit" class="submit-button">Готово</button>
       </div>
     </form>
-
+    <div class="modal-window hidden" id="modal-window">
+      <div class="header">
+        <h2>Заказ принят!</h2>
+        <button class="close-button">X</button>
+      </div>
+    </div>
+    <div id="overlay" class="overlay hidden"></div>
     <script src="index.js"></script>
   </body>
 </html>
