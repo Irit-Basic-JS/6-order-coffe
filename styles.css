@@ -44,4 +44,67 @@
     border: 2px solid orange;
     border-radius: 5px;
 }
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 
+    padding: 5px;
+
+    border: 1px solid lightskyblue;
+    background-color: transparent;
+}
+
+.header {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-window {
+    position: absolute;
+    z-index: 3;
+    padding: 0 20px 20px;
+
+    top: 40%;
+    left: 30%;
+
+    width: 45%;
+    height: auto;
+
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid lightskyblue;
+}
+
+.modal-window table {
+
+    border-collapse: collapse;
+}
+
+.modal-window tr {
+
+
+}
+
+.modal-window td {
+    padding: 10px 15px;
+    text-align: center;
+
+    min-width: 100px;
+
+    border: 1px solid skyblue;
+}
+
+.overlay {
+    z-index: 2;
+    position: fixed;
+    background-color: rgba(204, 204, 204, 0.5);
+
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+}
