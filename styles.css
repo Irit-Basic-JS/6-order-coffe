@@ -1,7 +1,9 @@
 .beverage {
     border: 1px solid #eee;
-    margin: 15px 0;
+    margin: 15px 5px;
     padding: 15px;
+    position: relative;
+    display: inline-block;
 }
 
 .beverage-count {
@@ -45,3 +47,63 @@
     border-radius: 5px;
 }
 
+.move-button {
+    border: none;
+    background: none;
+    padding: 10px;
+    color: Red;
+    font-size: 14px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-weight: bold;
+    transform: scaleX(1.5);
+}
+
+.modal {
+    display: block;
+    opacity: 1;
+    width: 500px;
+    max-height: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    padding: 15px;
+    background-color: #eee;
+    border: 2px solid rgb(77, 77, 77);
+    overflow-x: hidden;
+}
+
+.modal-overlay {
+   display: block;
+   opacity: 1;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   z-index: 900;
+}
+
+.mhide {
+    display: none;
+}
+
+.tableM, td, th {
+    text-align: center;
+    border: 1px solid rgba(12, 14, 15, 0.267);
+    border-collapse: collapse;
+}
+
+.tableM {
+    width: 470px;
+    margin-top: 8px;
+}
+
+.modal-top {
+    text-align: center;
+}
