@@ -8,6 +8,7 @@
   <body>
     <form>
       <fieldset class="beverage">
+        <button type="button" class="move-button" id="movebutton">X</button>
         <h4 class="beverage-count">Напиток №1</h4>
         <label class="field">
           <span class="label-text">Я буду</span>
@@ -20,19 +21,19 @@
         <div class="field">
           <span class="checkbox-label">Сделайте напиток на</span>
           <label class="checkbox-field">
-            <input type="radio" name="milk" value="usual" checked />
+            <input type="radio" name="milk0" value="usual" checked />
             <span>обычном молоке</span>
           </label>
           <label class="checkbox-field">
-            <input type="radio" name="milk" value="no-fat" />
+            <input type="radio" name="milk0" value="no-fat" />
             <span>обезжиренном молоке</span>
           </label>
           <label class="checkbox-field">
-            <input type="radio" name="milk" value="soy" />
+            <input type="radio" name="milk0" value="soy" />
             <span>соевом молоке</span>
           </label>
           <label class="checkbox-field">
-            <input type="radio" name="milk" value="coconut" />
+            <input type="radio" name="milk0" value="coconut" />
             <span>кокосовом молоке</span>
           </label>
         </div>
@@ -57,13 +58,27 @@
         </div>
       </fieldset>
       <div>
-        <button type="button" class="add-button">+ Добавить напиток</button>
+        <button type="button" class="add-button" id="addbutton">+ Добавить напиток</button>
       </div>
       <div style="margin-top: 30px">
-        <button type="submit" class="submit-button">Готово</button>
+        <button type="submit" class="submit-button" id="sb">Готово</button>
       </div>
     </form>
-
+    <!--Модальное окно с оверлеем-->
+    <div class="modal mhide" id="imodal">
+      <button type="button" class="move-button" id="modalclose">X</button>
+      <h4 class="modal-top beverage-count">Заказ принят!</h4>
+      <span id="modaltop">Вы заказали...</span>
+      <table class="tableM">
+        <tr>
+          <th>Напиток</th>
+          <th>Молоко</th>
+          <th>Дополнительно</th>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-overlay mhide" id="modaloverlay"></div>
+    <!---->
     <script src="index.js"></script>
   </body>
 </html>
