@@ -1,13 +1,14 @@
 class DrinkFieldset {
-    drinkNumber;
+    numberHandler;
+    onDelete;
 
-    constructor(drinkNumber) {
-        this.drinkNumber = drinkNumber;
+    constructor(numberHandler) {
+        this.numberHandler = numberHandler;
     }
 
     createElement() {
         const fieldset = this.#createFieldset();
-        const header = this.#createHeader(fieldset);
+        const [header, changeNumber] = this.#createHeader(fieldset);
         const drinkTypeField = this.#createDrinkTypeField();
         const milkField = this.#createMilkField();
         const optionsField = this.#createOptionsField();
@@ -17,7 +18,7 @@ class DrinkFieldset {
         fieldset.appendChild(milkField);
         fieldset.appendChild(optionsField);
 
-        return fieldset;
+        return [fieldset, changeNumber];
     }
 
     #createFieldset() {
@@ -30,13 +31,25 @@ class DrinkFieldset {
         const header = document.createElement("h4");
         header.classList.add('beverage-count');
         header.style = "display: inline-block;";
-        header.innerHTML = `Напиток №${this.drinkNumber}`;
+        const changer = () => {
+            header.innerHTML = `Напиток №${this.numberHandler()}`;
+        };
+        changer();
 
         const closeButton = document.createElement("span");
         closeButton.style = "margin-left: auto;";
         closeButton.innerHTML = "X";
         closeButton.onclick = () => {
-            fieldset.remove();
+            const event = {
+                isPrevent: false,
+                prevent() {
+                    this.isPrevent = true;
+                }
+            };
+            if (this.onDelete)
+                this.onDelete(event, this.numberHandler());
+            if (!event.isPrevent)
+                fieldset.remove();
         };
 
         const div = document.createElement('div');
@@ -44,7 +57,7 @@ class DrinkFieldset {
         div.appendChild(header);
         div.appendChild(closeButton);
 
-        return div;
+        return [div, changer];
     }
 
     #createDrinkTypeField() {
@@ -52,9 +65,9 @@ class DrinkFieldset {
         drinkTypeField.classList.add('field');
         drinkTypeField.innerHTML = `
             <span class="label-text">Я буду</span>
-            <select name="drink-name_${this.drinkNumber}">
+            <select name="drink-name">
               <option value="espresso">Эспрессо</option>
-              <option value="capuccino" selected>Капучино</option>
+              <option value="cappuccino" selected>Капучино</option>
               <option value="cacao">Какао</option>
             </select>
         `;
@@ -67,19 +80,19 @@ class DrinkFieldset {
         milkField.innerHTML = `
             <span class="checkbox-label">Сделайте напиток на</span>
             <label class="checkbox-field">
-              <input type="radio" name="milk_${this.drinkNumber}" value="usual" checked />
+              <input type="radio" name="milk" value="usual" checked />
               <span>обычном молоке</span>
             </label>
             <label class="checkbox-field">
-              <input type="radio" name="milk_${this.drinkNumber}" value="no-fat" />
+              <input type="radio" name="milk" value="no-fat" />
               <span>обезжиренном молоке</span>
             </label>
             <label class="checkbox-field">
-              <input type="radio" name="milk_${this.drinkNumber}" value="soy" />
+              <input type="radio" name="milk" value="soy" />
               <span>соевом молоке</span>
             </label>
             <label class="checkbox-field">
-              <input type="radio" name="milk_${this.drinkNumber}" value="coconut" />
+              <input type="radio" name="milk" value="coconut" />
               <span>кокосовом молоке</span>
             </label>
         `;
@@ -92,19 +105,19 @@ class DrinkFieldset {
         optionsField.innerHTML = `
             <span class="checkbox-label">Добавьте к напитку:</span>
             <label class="checkbox-field">
-              <input type="checkbox" name="options_${this.drinkNumber}" value="whipped cream" />
+              <input type="checkbox" name="options" value="whipped cream" />
               <span>взбитых сливок</span>
             </label>
             <label class="checkbox-field">
-              <input type="checkbox" name="options_${this.drinkNumber}" value="marshmallow" />
+              <input type="checkbox" name="options" value="marshmallow" />
               <span>зефирок</span>
             </label>
             <label class="checkbox-field">
-              <input type="checkbox" name="options_${this.drinkNumber}" value="chocolate" />
+              <input type="checkbox" name="options" value="chocolate" />
               <span>шоколад</span>
             </label>
             <label class="checkbox-field">
-              <input type="checkbox" name="options_${this.drinkNumber}" value="cinnamon" />
+              <input type="checkbox" name="options" value="cinnamon" />
               <span>корицу</span>
             </label>
         `;
@@ -112,29 +125,48 @@ class DrinkFieldset {
     }
 }
 
-class DrinkForm {
-    #drinksCount = 1;
+class DrinkFormsManager {
+    #drinksCount = 0;
+    #container;
+    #addButton;
+    #drinkForms = [];
 
     constructor() {
-        this.form = document.createElement('form');
-        this.addButton = this.#createAddButton();
-        this.submitButton = DrinkForm.#createSubmitButton();
-
-        this.form.appendChild(this.addButton);
-        this.form.appendChild(this.submitButton);
+        this.#container = document.createElement('div');
+        this.#addButton = this.#createAddButton();
     }
 
-    appendForm(element) {
-        element.appendChild(this.form);
+    createElement() {
+        const submitButton = DrinkFormsManager.#createSubmitButton();
+        this.#container.appendChild(this.#addButton);
+        this.#container.appendChild(submitButton);
+
+        return this.#container;
     }
 
-    addDrinkFields() {
-        const div = document.createElement('div');
-        const drinkFieldset = new DrinkFieldset(this.#drinksCount).create();
-        div.appendChild(drinkFieldset);
-
-        this.form.insertBefore(div, this.addButton);
+    appendForm() {
         this.#drinksCount++;
+
+        const form = new DrinkForm(this.#drinksCount);
+        const [element, drinkFieldset, changeNumber] = form.createElement();
+
+        drinkFieldset.onDelete = (event, id) => {
+            if (this.#drinksCount === 1)
+                event.prevent();
+            else {
+                this.#drinksCount--;
+                for (const [form, updateNumber] of this.#drinkForms) {
+                    if (form.number > id) {
+                        form.number--;
+                        updateNumber();
+                    }
+                }
+            }
+
+
+        };
+        this.#drinkForms.push([form, changeNumber]);
+        this.#container.insertBefore(element, this.#addButton);
     }
 
     static #createSubmitButton() {
@@ -153,17 +185,32 @@ class DrinkForm {
         addButton.classList.add('add-button');
         addButton.innerHTML = '+ Добавить напиток';
         addButton.onclick = () => {
-            this.addDrinkFields();
+            this.appendForm();
         };
 
         return addButton;
     }
+}
 
+class DrinkForm {
+    number;
+
+    constructor(number) {
+        this.number = number;
+    }
+
+    createElement() {
+        const drinkFieldset = new DrinkFieldset(() => this.number);
+        const [element, changeNumber] = drinkFieldset.createElement();
+        const form = document.createElement('form');
+        form.appendChild(element);
+        return [form, drinkFieldset, changeNumber];
+    }
 }
 
 (function () {
     const body = document.getElementsByTagName('body')[0];
-    const form = new DrinkForm();
-    form.appendForm(body);
-    form.addDrinkFields();
+    const manager = new DrinkFormsManager();
+    body.appendChild(manager.createElement());
+    manager.appendForm();
 })();
