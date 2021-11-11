@@ -6,64 +6,32 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <form>
-      <fieldset class="beverage">
-        <h4 class="beverage-count">Напиток №1</h4>
-        <label class="field">
-          <span class="label-text">Я буду</span>
-          <select>
-            <option value="espresso">Эспрессо</option>
-            <option value="capuccino" selected>Капучино</option>
-            <option value="cacao">Какао</option>
-          </select>
-        </label>
-        <div class="field">
-          <span class="checkbox-label">Сделайте напиток на</span>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="usual" checked />
-            <span>обычном молоке</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="no-fat" />
-            <span>обезжиренном молоке</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="soy" />
-            <span>соевом молоке</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="radio" name="milk" value="coconut" />
-            <span>кокосовом молоке</span>
-          </label>
+    <div id="add-button-container">
+      <button type="button" class="add-button">+ Добавить напиток</button>
+    </div>
+    <div id="submit-button-container" style="margin-top: 10px;">
+      <button type="submit" class="submit-button">Готово</button>
+    </div>
+    <div class="modal-container">
+      <div class="modal">
+        <div class="modal-header">
+          <h1>Ваш заказ</h1>
+          <div class="close-button" id="modal-close">X</div>
         </div>
-        <div class="field">
-          <span class="checkbox-label">Добавьте к напитку:</span>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="whipped cream" />
-            <span>взбитых сливок</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="marshmallow" />
-            <span>зефирок</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="chocolate" />
-            <span>шоколад</span>
-          </label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="options" value="cinnamon" />
-            <span>корицу</span>
-          </label>
+        <div class="modal-body">
+          <h3 class="modal-text">Вы заказали...</h3>
         </div>
-      </fieldset>
-      <div>
-        <button type="button" class="add-button">+ Добавить напиток</button>
+        <div class="modal-footer">
+          <form>
+            <label>
+              Выберите время заказа
+              <input type="date" name="order-date" required/>
+            </label>            
+            <button type="submit" class="submit-button">Оформить заказ</button>
+          </form>
+        </div>
       </div>
-      <div style="margin-top: 30px">
-        <button type="submit" class="submit-button">Готово</button>
-      </div>
-    </form>
-
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
