@@ -3,28 +3,26 @@ let drinkCount = 0;
 
 appendForm(addForm());
 
-//const addButton = ;
 document.querySelector(".add-button").onclick = function() {
     const form = addForm();
     document.body.appendChild(form);
     appendForm(form);
 }
 
+function createDeleteButton(form) {
+    const deleteButton = document.createElement("div");
 
-//function createDeleteButton(form) {
-//    const deleteButton = document.createElement("div");
-//
-//    deleteButton.classList.add("delete-button");
-//    deleteButton.textContent = "—";
-//
-//    deleteButton.onclick = function() {
-//        if (drinkCount <= 1) return;
-//        document.body.removeChild(form);
-//        drinkCount--;
-//        updateBeverageCount();
-//    };
-//    return deleteButton;
-//}
+    deleteButton.classList.add("delete-button");
+    deleteButton.textContent = "X";
+
+    deleteButton.onclick = function() {
+        if (drinkCount <= 1) return;
+        document.body.removeChild(form);
+        drinkCount--;
+        updateBeverageCount();
+    };
+    return deleteButton;
+}
 
 function updateBeverageCount() {
     const counts = document.querySelectorAll(".beverage-count");
@@ -37,6 +35,8 @@ function appendForm(form) {
     document.body.insertBefore(form, document.getElementById("add_button_container"));
     drinkCount += 1;
     updateBeverageCount();
+
+    form.querySelector(".beverage-header").appendChild(createDeleteButton(form));
 }
 
 function addForm() {
@@ -44,7 +44,9 @@ function addForm() {
     form.classList.add('beverage-form');
     form.innerHTML = `
     <fieldset class="beverage">
-      <h4 class="beverage-count">Напиток №1</h4>
+        <div class = "beverage-header">
+            <h4 class="beverage-count">Напиток №1</h4>
+        </div>
       <label class="field">
         <span class="label-text">Я буду</span>
         <select>
