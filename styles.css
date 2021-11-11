@@ -45,3 +45,8 @@
     border-radius: 5px;
 }
 
+.delete-button{
+    width: 20px;
+    height: 10px;
+    /*position: ;*/
+}
