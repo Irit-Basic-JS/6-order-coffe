@@ -45,3 +45,93 @@
     border-radius: 5px;
 }
 
+.delete-button{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    left: 250px;
+}
+
+.cute{
+    position: fixed;
+    bottom: 0px;
+    right: 10px;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    padding: 60px 15px;
+    visibility: hidden;
+}
+
+.modal-content{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: flex;
+    padding: 0px 0px 20px 0px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #f9f9f9;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: 0 5px 15px black;
+}
+
+.modal-close{
+    background: #ff0000;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.modal-description {
+    margin: 0px 0px 20px 0px;
+    font-size: 1.125rem;
+}
+
+.active {
+    position: fixed;
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+}
+
+table{
+    text-align: center;
+    width: 480px;
+    margin: 10px;
+    border-collapse: collapse;
+}
+
+td{
+    border-top: 1px solid grey;
+}
+
+.textarea{
+    display: flex;
+    align-items:flex-start;
+}
+
+.comment-text{
+    margin-left: 50px;
+}
