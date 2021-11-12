@@ -9,11 +9,36 @@ document.querySelector(".add-button").onclick = function() {
     appendForm(form);
 }
 
+document.querySelector(".submit-button").onclick = function() {
+  const modalWindow = new ModalManager();
+  modalWindow.show();
+}
+
+class ModalManager{
+  constructor(){
+    this.modalContainer = document.querySelector(".modal-window-cnotainer");
+
+    const modalDelete = document.getElementById("close-modal-window");
+    modalDelete.onclick = () => this.hide();
+
+    const modalText = this.modalContainer.querySelector(".modal-text");
+    modalText.textContent = "Заказ принят";
+  };
+
+  show() {
+    this.modalContainer.style.visibility = "visible";
+  };
+
+  hide() {
+    this.modalContainer.style.visibility = "hidden";
+  };
+}
+
 function createDeleteButton(form) {
     const deleteButton = document.createElement("div");
 
     deleteButton.classList.add("delete-button");
-    deleteButton.textContent = "X";
+    deleteButton.textContent = "—";
 
     deleteButton.onclick = function() {
         if (drinkCount <= 1) return;
