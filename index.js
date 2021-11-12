@@ -8,7 +8,10 @@ addButton.onclick = function () {
     counter++;
     const newForm = beverage.cloneNode(true);
     newForm.innerHTML = newForm.innerHTML.replace("Напиток №1", `Напиток №${counter}`);
-    newForm.id = `form${counter}`
+    newForm.id = `form${counter}`;
+    for(let i of newForm.querySelectorAll('.milkselect')){
+        i.name=`milk${counter}`
+    }
     document.querySelector(".beverages").append(newForm);
 }
 
