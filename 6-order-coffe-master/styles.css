@@ -1,0 +1,194 @@
+body { 
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+    background: url(coffee1.jpg) center no-repeat;
+    backdrop-filter: blur(5px);
+    /*background-position: fixed;
+    background-size: 100%;*/
+    z-index: -1; /* Фон ниже текста */
+    background-position: 50% 50%;
+    background-size: cover;
+    background-attachment: fixed;
+}
+ 
+fieldset {
+    position: relative;
+    border: 1px solid #eee;
+    margin: 5px;
+    padding: 15px;
+    border: 1px solid #8B4513;
+    border-radius: 10px;
+}
+
+.beverage{
+    border: 2px solid #8B4513;
+}
+
+.beverage-count {
+    margin: 0 0 15px;
+}
+
+.field {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.label-text {
+    display: inline-block;
+    width: 80px;
+}
+
+.checkbox-label {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.checkbox-field {
+    margin: 5px 0;
+    display: block;
+}
+
+.add-button {
+    border: none;
+    background: none;
+    padding: 10px;
+    margin-left: 20px;
+    /*color: rgba(0, 27, 255, 0.82);*/
+    font-size: 14px;
+    text-decoration: underline dashed;
+    cursor: pointer;
+}
+
+.submit-button {
+    font-size: 16px;
+    padding: 7px 15px;
+    margin-left: 30px;
+    background: #d68b40;
+    border: 2px solid #8B4513;
+    border-radius: 5px;
+}
+
+.submit-button-end{
+    font-size: 16px;
+    padding: 7px 15px;
+    background: #d68b40;
+    border: 2px solid #8B4513;
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.close:before {
+    content: '+';
+    color: black;
+    position: absolute;
+    z-index: 2;
+    transform: rotate(45deg);
+    font-size: 50px;
+    line-height: 1;
+    top: -5px;
+    left: 6px;
+    transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+}
+.close:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: black;
+    transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+    transform: scale(0.01);
+}
+.close:hover:after {
+    transform: scale(1);
+}
+.close:hover:before {
+    transform: scale(0.8) rotate(45deg);
+    color: #fff;
+}
+.hidden{
+    backdrop-filter: blur(2px);
+    background-color: rgba(0,0,0,.3);
+    height: 100%;
+    width: 100%;
+    /*position: fixed;*/
+    position: sticky;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    background-attachment: fixed;
+}
+.lightbox {
+    width: 500px;
+    position: relative;
+    background-color: #ccac70;
+    z-index: 2;
+    overflow-y: hidden;
+}
+.lightbox-head{
+    display: flex;
+    justify-content: space-between;
+}
+.countOfCoffee{
+    margin: 10px auto auto 30px;
+    text-align: center;
+    font-size: medium;
+}
+.lightboxClose{
+    top: 0px;
+    right: 0px;
+    position: relative;
+}
+table{
+    text-align: center;
+    width: 480px;
+    margin: 10px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+th{
+    border-bottom: 1px solid grey;
+}
+td{
+    border-top: 1px solid grey;
+}
+textarea{
+    display: flex;
+    margin: 0px;
+    align-items:flex-start;
+    background-color: #d68b40;
+    border: 1px solid #8B4513;
+    border-radius: 5px;
+}
+.comment-text{
+    margin-left: 30px;
+}
+.lightbox-form{
+    margin: 5px auto 10px 30px;
+}
+
+.order-time{
+    font-size: 16px;
+    padding: 7px 15px;
+    margin-left: 30px;
+    background: #d68b40;
+    border: 2px solid #8B4513;
+    border-radius: 5px;
+}
+
+::placeholder{
+    color: #000;
+}
