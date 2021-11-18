@@ -117,9 +117,10 @@
     word-break: break-all;
     resize: vertical;
     width: 40%;
-    height: 100px;
+    height: 200px;
     vertical-align: text-top;
     margin: 5px;
+    overflow: scroll;
 }
 
 .extra-out {
