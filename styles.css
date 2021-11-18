@@ -45,3 +45,66 @@
     border-radius: 5px;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-window {
+    position: fixed;
+    background-color: lightblue;
+    border: 2px solid greenyellow;
+    z-index: 3;
+    width: 500px;
+    top: 30%;
+    left: 35%;
+    height: auto;
+}
+
+.modal-window .header {
+    position: relative;
+}
+
+.modal-window .header h3 {
+    width: 100%;
+    text-align: center;
+    color: green;
+}
+
+.modal-window p {
+    text-align: center;
+    width: 100%;
+    color: blue;
+}
+
+.modal-window .header button {
+    height: 50%;
+    background-color: rgb(238, 59, 59);
+    color: #ccc;
+}
+
+.overlay {
+    background-color: rgba(91, 92, 91, .5);
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+table {
+    width: 100%;
+    color: purple;
+    border-collapse: collapse;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+td, th {
+    border: 1px solid gray;
+}
