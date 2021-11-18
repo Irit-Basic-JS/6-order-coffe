@@ -1,5 +1,6 @@
 .beverage {
     border: 1px solid #eee;
+    background-color: blanchedalmond;
     margin: 15px 0;
     padding: 15px;
 }
@@ -44,4 +45,61 @@
     border: 2px solid orange;
     border-radius: 5px;
 }
+
+.form-header{
+    display: flex; 
+    justify-content: space-between;
+}
+
+.deletion{
+    width: 25px;
+    height: 25px;
+    background-color: rgb(236, 88, 88);
+}
+
+
+.modal-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(105, 105, 105, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-window {
+    width: 500px;
+    height: auto;
+    position: fixed;
+    background-color: rgb(190, 250, 94);
+    padding: 15px;
+    text-align: center;
+}
+
+.modal-window-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal-window-title{
+    margin:  0;
+}
+
+.order-table{
+    display:inline;
+    align-items: center;
+    justify-content: center;
+    word-break: break-all;
+}
+
+ th {
+    border: 2px solid black;
+ }
+ td {
+    border: 1px solid gray;
+ } 
 
