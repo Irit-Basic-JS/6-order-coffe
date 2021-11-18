@@ -45,3 +45,67 @@
     border-radius: 5px;
 }
 
+.beverage-header {
+    display: flex;
+    justify-content: space-between;
+}
+.delete-button {
+    cursor: pointer;
+    color: rgb(248, 0, 0);
+}
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.500);
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    padding:30px 0;
+}
+
+.modal-window {
+    background: #b8b8b8;
+    width: 600px;
+    max-width: 100%;
+    border-color: rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+.modal-header h1{
+    padding-left: 35%;
+}
+
+.button-block .delete-button {
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.modal-value {
+    text-align: center;
+    padding-right: 10%;
+}
+
+.table-container {
+    visibility: hidden;
+}
+
+textarea{
+    padding-top: 10px;
+    word-break: break-all;
+}
