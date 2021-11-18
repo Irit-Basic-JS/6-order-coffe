@@ -10,28 +10,45 @@ document.querySelector(".add-button").onclick = function() {
 }
 
 document.querySelector(".submit-button").onclick = function() {
-  const modalWindow = new ModalManager();
-  modalWindow.show();
+    const modalWindow = new ModalManager();
+    modalWindow.show();
+    importDataFromForms(modalWindow);
 }
 
-class ModalManager{
-  constructor(){
-    this.modalContainer = document.querySelector(".modal-window-cnotainer");
+class ModalManager {
+  constructor() {
+    this.modalOverlay = document.querySelector(".overlay");
+    this.modalContainer = document.querySelector(".modal-container");
+    this.modalTable = document.querySelector(".table-container");
 
-    const modalDelete = document.getElementById("close-modal-window");
-    modalDelete.onclick = () => this.hide();
+    const modalDelete = document.getElementById("close-modal");
+    modalDelete.onclick = () =>{ this.hide(); this.modalContainer.hide();}
 
-    const modalText = this.modalContainer.querySelector(".modal-text");
-    modalText.textContent = "Заказ принят";
+    const modalText = this.modalContainer.querySelector(".modal-value");
+    modalText.textContent = `Вы заказали ${drinkCount} ${drinkWord(drinkCount)}`;
   };
 
   show() {
+    this.modalOverlay.style.visibility = "visible";
     this.modalContainer.style.visibility = "visible";
+    this.modalTable.style.visibility = "visible";
   };
 
   hide() {
     this.modalContainer.style.visibility = "hidden";
+    this.modalOverlay.style.visibility = "hidden";
+    this.modalTable.style.visibility = "hidden";
   };
+}
+
+function drinkWord (drinkCount) {
+  drinks = drinkCount % 100
+  if (drinks >= 5 && drinks <= 20) return "напитков";
+  else {
+    if (drinks % 10 == 1) return "напиток";
+    else if (drinks % 10 < 5) return "напитка";
+    else return "напиков";
+  }
 }
 
 function createDeleteButton(form) {
@@ -41,7 +58,10 @@ function createDeleteButton(form) {
     deleteButton.textContent = "—";
 
     deleteButton.onclick = function() {
-        if (drinkCount <= 1) return;
+        if (drinkCount <= 1) {
+          alert("Зачем ты нажимаешь сюда? Лучше порадуй себя ещё одним напитком :)");
+          return;
+        }
         document.body.removeChild(form);
         drinkCount--;
         updateBeverageCount();
@@ -74,51 +94,68 @@ function addForm() {
         </div>
       <label class="field">
         <span class="label-text">Я буду</span>
-        <select>
-          <option value="espresso">Эспрессо</option>
-          <option value="capuccino" selected>Капучино</option>
-          <option value="cacao">Какао</option>
+        <select name="drink">
+          <option value="эспрессо">Эспрессо</option>
+          <option value="капучино" selected>Капучино</option>
+          <option value="како">Какао</option>
         </select>
       </label>
       <div class="field">
         <span class="checkbox-label">Сделайте напиток на</span>
         <label class="checkbox-field">
-          <input type="radio" name="milk" value="usual" checked />
+          <input type="radio" name="milk" value="обычное" checked />
           <span>обычном молоке</span>
         </label>
         <label class="checkbox-field">
-          <input type="radio" name="milk" value="no-fat" />
+          <input type="radio" name="milk" value="обезжиренное" />
           <span>обезжиренном молоке</span>
         </label>
         <label class="checkbox-field">
-          <input type="radio" name="milk" value="soy" />
+          <input type="radio" name="milk" value="соевое" />
           <span>соевом молоке</span>
         </label>
         <label class="checkbox-field">
-          <input type="radio" name="milk" value="coconut" />
+          <input type="radio" name="milk" value="кокосовое" />
           <span>кокосовом молоке</span>
         </label>
       </div>
       <div class="field">
         <span class="checkbox-label">Добавьте к напитку:</span>
         <label class="checkbox-field">
-          <input type="checkbox" name="options" value="whipped cream" />
+          <input type="checkbox" name="options" value="взбитые сливки" />
           <span>взбитых сливок</span>
         </label>
         <label class="checkbox-field">
-          <input type="checkbox" name="options" value="marshmallow" />
+          <input type="checkbox" name="options" value="зефир" />
           <span>зефирок</span>
         </label>
         <label class="checkbox-field">
-          <input type="checkbox" name="options" value="chocolate" />
+          <input type="checkbox" name="options" value="шоколад" />
           <span>шоколад</span>
         </label>
         <label class="checkbox-field">
-          <input type="checkbox" name="options" value="cinnamon" />
+          <input type="checkbox" name="options" value="корица" />
           <span>корицу</span>
         </label>
+      </div>
+      <div class="field">
+        <textarea placeholder="Комментарий к напитку" name="comment"></textarea>
       </div>
     </fieldset>
 `;
     return form;
+}
+
+function importDataFromForms(window) {
+  let table = window.querySelector('.result-table');
+  let forms = document.querySelectorAll('.form');
+  for (let form of forms) {
+    let row = document.createElement('tr') in window;
+    let data = new FormData(form);
+    row.innerHTML = `<td>${data.get('drink')}</td>
+    <td>${data.get('milk')}</td>
+    <td>${data.getAll('options').toString().replace(',', ', ')}</td>
+    <td>${data.get('comment')}</td>`;
+    table.appendChild(row);
+  }
 }

@@ -12,14 +12,27 @@
       <div id="submit_button_container" style="margin-top: 30px">
         <button type="submit" class="submit-button">Готово</button>
       </div>
-      <div class = "modal-window-cnotainer">
-        <div class="modal-window">
-          <div class="modal-header">
-            <h1>Заказ принят</h1>
-            <div class="delete-button" id="close-modal-window">—</div>
+        <div class = "overlay">
+          <div class = "modal-container">
+            <div class="modal-window">
+              <div class="modal-header">
+                <h1>Ваш заказ</h1>
+                <div class="button-block" id="close-modal">
+                  <div class="delete-button">—</div>
+                </div>
+              </div>
+              <div class="modal-value"></div>
+                <div class = "table-container">
+                  <table class = "result-table">
+                    <th scope="col">Напиток</th>
+                    <th scope="col">Молоко</th>
+                    <th scope="col">Дополнительно</th>
+                    <th scope="col">Пожелания</th>
+                  </table>
+                </div>
+            </div>
           </div>
         </div>
-      </div>
     <script src="index.js"></script>
   </body>
 </html>
