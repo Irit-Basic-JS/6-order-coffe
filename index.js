@@ -1,51 +1,51 @@
-let _drinkCount = 0;
+createNewForm(getBeverageForm());
 
-appendForm(createForm());
+function getBeverageCount() {
+    return document.querySelectorAll(".beverage").length;
+}
 
-const addButton = document.querySelector(".add-button");
-addButton.onclick = function() {
-    const form = createForm();
-    appendForm(form);
+document.querySelector(".add-button").onclick = () => {
+    createNewForm(getBeverageForm());
 };
 
-const submitButton = document.querySelector(".submit-button");
-submitButton.onclick = function() {
-    const modal = new ModalManager();
-    modal.show();
+document.querySelector(".submit-button").onclick = () => {
+    new ModalWindow().show();
 };
 
-class ModalManager {
-
+class ModalWindow {
     constructor() {
         this.modalContainer = document.querySelector(".modal-container");
 
-        const modalClose = document.getElementById("modal-close");
-        modalClose.onclick = () => this.hide();
+        let closeBtn = document.getElementById("modal-close");
+        closeBtn.onclick = () => this.hide();
 
-        const modalText = this.modalContainer.querySelector(".modal-text");
-        const ending = _drinkCount % 10 == 1 ? "ок" : 
-            _drinkCount % 10 >= 2 && _drinkCount % 10 <= 4 ? "ка" : "ков";
-        modalText.textContent = `Вы заказали ${_drinkCount} напит${ending}`;
+        let modalText = this.modalContainer.querySelector(".modal-text");
+        let beverageCount = getBeverageCount();
+        let wordEnd = beverageCount % 10 == 1
+            ? "ок"
+            : beverageCount % 10 >= 2 && beverageCount % 10 <= 4
+                ? "ка"
+                : "ков";
+        modalText.textContent = `Вы заказали ${beverageCount} напит${wordEnd}`;
 
         this.modalContainer.querySelector(".modal-body").appendChild(this.createOrderTable());
 
-        const form = this.modalContainer.querySelector("form");
+        let form = this.modalContainer.querySelector("form");
         form.onsubmit = (event) => {
             event.preventDefault();
-            
-            const data = new FormData(form);
-            const orderDate = Date.parse(data.get("order-date"));
-            const today = new Date().setHours(0,0,0,0);
+
+            let data = new FormData(form);
+            let orderDate = Date.parse(data.get("order-date"));
+            let today = new Date().setHours(0, 0, 0, 0);
 
             if (orderDate > today)
                 this.hide();
-            else
-                alert("Мы не умеем перемещаться во времени. Выберите время позже, чем текущее.");
+            else alert("Мы не умеем перемещаться во времени. Выберите время позже, чем текущее.");
         };
     };
 
     createOrderTable() {
-        const table = document.createElement("table");
+        let table = document.createElement("table");
         table.classList.add("order-table");
         table.innerHTML = `
             <thead><tr>
@@ -56,23 +56,23 @@ class ModalManager {
             </tr></thead>
         `;
 
-        for (let form of document.querySelectorAll(".beverage-form")) {        
-            const formData = new FormData(form);
-            const dataKeys = ["coffee", "milk", "options"];
+        for (let form of document.querySelectorAll(".beverage-form")) {
+            let formData = new FormData(form);
+            let dataKeys = ["coffee", "milk", "options"];
 
-            const tableRow = document.createElement("tr");
+            let tableRow = document.createElement("tr");
 
             for (let key of dataKeys) {
-                const column = document.createElement("td");
+                let column = document.createElement("td");
 
-                const values = formData.getAll(key).map(e => this.#translate(e));
+                let values = formData.getAll(key).map(e => this.#translate(e));
                 column.textContent = values.join(", ");
 
                 tableRow.appendChild(column);
             }
 
-            const column = document.createElement("td");
-            const str = form.querySelector(".extra-input").value ?? "";
+            let column = document.createElement("td");
+            let str = form.querySelector(".extra-input").value ?? "";
             column.textContent = str;
             tableRow.appendChild(column);
 
@@ -92,81 +92,79 @@ class ModalManager {
     };
 
     #translate(word) {
-        switch(word) {
+        switch (word) {
             case "espresso": return "Эспрессо";
             case "capuccino": return "Капучино";
             case "cacao": return "Какао";
-    
+
             case "usual": return "Обычное молоко";
             case "no-fat": return "Обезжиренное молоко";
             case "soy": return "Соевое молоко";
             case "coconut": return "Кокосовое молоко";
-    
+
             case "whipped-cream": return "Взбитые сливки";
             case "marshmallow": return "Зефирки";
             case "chocolate": return "Шоколад";
             case "cinnamon": return "Корица";
         }
     }
-    
+
 };
 
 function linkTextareaToDisplay(form) {
-    const extra = form.querySelector(".extra-container");
+    let extra = form.querySelector(".extra-container");
 
-    const textArea = extra.querySelector(".extra-text");
-    const display = extra.querySelector(".extra-view");
+    let textArea = extra.querySelector(".extra-text");
+    let display = extra.querySelector(".extra-view");
 
     textArea.oninput = () => {
-        display.innerHTML = highlightWords(textArea.value);
+        display.innerHTML = makeWordsBald(textArea.value);
     };
 }
 
-function highlightWords(str) {
-    const regex = /срочно|быстрее|побыстрее|скорее|поскорее|очень нужно/gmi;
-    return str.replace(regex, w => `<b>${w}</b>`);
+function makeWordsBald(str) {
+    let regex = /срочно|быстрее|побыстрее|скорее|поскорее|очень нужно/gmi;
+    return str.replace(regex, word => `<b>${word}</b>`);
 };
 
 function createCloseButton(form) {
-    const closeButton = document.createElement("div");
+    let closeButton = document.createElement("div");
 
     closeButton.classList.add("close-button");
     closeButton.textContent = "X";
 
     closeButton.onclick = function () {
-        if (_drinkCount <= 1) return;
+        if (getBeverageCount() <= 1) return;
         document.body.removeChild(form);
-        _drinkCount--;
-        updateDrinkNumbers();
+        updateBeverageIDS();
     };
 
     return closeButton;
 }
 
-function updateDrinkNumbers() {
-    const counters = document.querySelectorAll(".beverage-count");
-    for (let i = 0; i < counters.length; i++)
-        counters[i].textContent = `Напиток №${i + 1}`;
+function updateBeverageIDS() {
+    let IDS = document.querySelectorAll(".ID");
+    for (let i = 0; i < IDS.length; i++)
+        IDS[i].textContent = `Напиток №${i + 1}`;
 }
 
-function appendForm(form) {
+function createNewForm(form) {
     document.body.insertBefore(form, document.getElementById("add-button-container"));
 
-    _drinkCount++;
-    updateDrinkNumbers();
+    updateBeverageIDS();
 
     linkTextareaToDisplay(form);
-    const fieldSetHeader = form.querySelector(".beverage-header");
+    let fieldSetHeader = form.querySelector(".beverage-header");
     fieldSetHeader.appendChild(createCloseButton(form));
 }
 
-function createForm() {
-    const form = document.createElement("form");
+function getBeverageForm() {
+    let form = document.createElement("form");
     form.classList.add("beverage-form")
     form.innerHTML = `
         <fieldset class="beverage">
             <div class="beverage-header">
-                <h4 class="beverage-count"></h4>
+                <h4 class="ID"></h4>
             </div>
             <label class="field">
                 <span class="label-text">Я буду</span>
