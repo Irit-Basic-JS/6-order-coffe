@@ -13,6 +13,11 @@
     margin-bottom: 10px;
 }
 
+.beverage-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .label-text {
     display: inline-block;
     width: 80px;
@@ -43,5 +48,85 @@
     padding: 7px 15px;
     border: 2px solid orange;
     border-radius: 5px;
+    cursor: pointer;
 }
 
+.close-button {
+    cursor: pointer;
+}
+
+.modal-container {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.modal {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 750px;
+    position: fixed;
+    background-color: white;
+    padding: 15px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-footer {
+    margin-top: 15px;
+}
+
+.modal-footer form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.order-table{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    word-break: break-all;
+}
+
+.order-table th, .order-table {
+    border: 1px solid black;
+}
+
+.order-table td {
+    border:1px solid grey;
+}
+
+.extra-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.extra-text {
+    word-break: break-all;
+    resize: vertical;
+    width: 40%;
+    height: 200px;
+    vertical-align: text-top;
+    margin: 5px;
+    overflow: scroll;
+}
+
+.extra-out {
+    overflow-wrap: break-word;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
