@@ -1,5 +1,9 @@
 appendForm(createForm());
 
+function getDrinkCount() {
+    return document.querySelectorAll(".beverage").length;
+}
+
 const addButton = document.querySelector(".add-button");
 addButton.onclick = function() {
     const form = createForm();
@@ -21,7 +25,7 @@ class ModalManager {
         modalClose.onclick = () => this.hide();
 
         const modalText = this.modalContainer.querySelector(".modal-text");
-        const drinkCount = drinkCount();
+        const drinkCount = getDrinkCount();
         const ending = drinkCount % 10 == 1 ? "ок" : 
             drinkCount % 10 >= 2 && drinkCount % 10 <= 4 ? "ка" : "ков";
         modalText.textContent = `Вы заказали ${drinkCount} напит${ending}`;
@@ -110,10 +114,6 @@ class ModalManager {
     
 };
 
-function drinkCount() {
-    return document.querySelectorAll(".beverage").length;
-}
-
 function linkTextareaToDisplay(form) {
     const extra = form.querySelector(".extra-container");
 
@@ -137,7 +137,7 @@ function createCloseButton(form) {
     closeButton.textContent = "X";
 
     closeButton.onclick = function () {
-        if (drinkCount() <= 1) return;
+        if (getDrinkCount() <= 1) return;
         document.body.removeChild(form);
         updateDrinkNumbers();
     };
