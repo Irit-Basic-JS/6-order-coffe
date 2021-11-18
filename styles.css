@@ -1,11 +1,19 @@
+html{
+    background-color: #7999e1;
+    font-family:monospace;
+    font-size: larger;
+}
+
 .beverage {
-    border: 1px solid #eee;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(106, 219, 219);
     margin: 15px 0;
     padding: 15px;
 }
 
 .beverage-count {
     margin: 0 0 15px;
+    font-size: xx-large;
 }
 
 .field {
@@ -41,7 +49,65 @@
 .submit-button {
     font-size: 16px;
     padding: 7px 15px;
-    border: 2px solid orange;
+    border: 2px solid black;
+    font-weight: 800;
     border-radius: 5px;
 }
 
+.form-header{
+    display: flex; 
+    justify-content: space-between;
+}
+
+.close-Button{
+    width: 35px;
+    height: 35px;
+    background-color: rgb(233, 0, 0);
+    font-size: large;
+}
+
+
+.modal-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(105, 105, 105, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-window {
+    width: 666px;
+    height: auto;
+    position: fixed;
+    background-color: #FFD37B;
+    padding: 15px;
+    text-align: center;
+}
+
+.modal-window-header{  
+    display: flex;  
+    justify-content: space-between;
+    align-items: flex-start;    
+}
+
+.modal-window-title{
+    margin:  0;
+}
+
+.order-table{
+    display:inline;
+    align-items: center;
+    justify-content: center;
+    word-break: break-all;
+}
+
+ th {
+    border: 2px solid black;
+ }
+ td {
+    border: 1px solid gray;
+ } 
