@@ -96,6 +96,7 @@
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
+    word-break: break-all;
 }
 
 .order-table th, .order-table {
@@ -113,6 +114,7 @@
 }
 
 .extra-text {
+    word-break: break-all;
     resize: vertical;
     width: 40%;
     height: 100px;
