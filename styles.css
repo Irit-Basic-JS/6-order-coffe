@@ -1,7 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
+* {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.beverage-list {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    gap: 5px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
 .beverage {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 200px;
     border: 1px solid #eee;
-    margin: 15px 0;
+    margin: 0;
     padding: 15px;
+    background-color: rgba(125, 123, 124, 0.1);
+}
+
+.beverage:hover,
+.beverage:focus-within {
+    background-color: rgba(125, 123, 124, 0.4);
+}
+
+.beverage .wishes {
+    display: block;
+    margin: 5px 0;
+    resize: none;
+}
+
+.beverage .wishes-result {
+    margin: 0;
+    word-break: break-word;
+}
+
+.btn-delete, .btn-close {
+    align-self: flex-end;
+    font-size: larger;
+    font-weight: bolder;
+    cursor: pointer;
 }
 
 .beverage-count {
@@ -45,3 +89,53 @@
     border-radius: 5px;
 }
 
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.confirmation {
+    box-sizing: border-box;
+    width: 500px;
+    padding: 5px;
+}
+
+.confirmation .btn-close {
+    line-height: 0.5em;
+    align-self: flex-start;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.modal-body {
+    margin-bottom: 10px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.beverage-table {
+    border-collapse: collapse;
+}
+
+.beverage-table th,
+.beverage-table td {
+    padding: 5px;
+    border: 1px solid;
+}
+
+.beverage-table td:nth-child(4) {
+    word-break: break-all;
+    max-width: 200px;
+}
+
+.beverage-table th {
+    text-align: center;
+}
